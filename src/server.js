@@ -7,6 +7,12 @@ fastify.get('/', function (req, reply) {
   reply.send({ hello: 'world' });
 });
 
+// Register routes to handle users/:id/rewards
+const usersRoutes = require('./routes/users');
+usersRoutes.forEach((route, i) => {
+  fastify.route(route);
+});
+
 // Start the server
 const start = async () => {
   try {

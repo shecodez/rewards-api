@@ -1,0 +1,55 @@
+# If using VS Code - you can use the Extension: REST Client (https://marketplace.visualstudio.com/items?itemName=humao.rest-client) to test endpoints 
+
+### GET AllUsers
+GET http://localhost:8080/users HTTP/1.1
+
+### GET (create) User 2 - past date
+GET http://localhost:8080/users/2/rewards?at=2021-03-19T12:00:00Z HTTP/1.1
+
+### GET (create) User 1 - last week 5/15-5/21 22'
+GET http://localhost:8080/users/1/rewards?at=2022-05-20T12:00:00Z HTTP/1.1
+
+### GET (create) User 3 - default is current date (2022-05-23T13:45:15.407Z)
+GET http://localhost:8080/users/3/rewards HTTP/1.1
+
+### PATCH User 3 far past date
+PATCH http://localhost:8080/users/3/rewards/2020-03-18T00:00:00Z/redeem HTTP/1.1
+content-type: application/json
+
+{}
+
+### PATCH User 3 current date - assuming tested on (2022-05-24T00:00:00Z)
+PATCH http://localhost:8080/users/3/rewards/2022-05-24T00:00:00Z/redeem HTTP/1.1
+content-type: application/json
+
+{}
+
+### PATCH User 1 expired date
+PATCH http://localhost:8080/users/1/rewards/2022-05-20T00:00:00Z/redeem HTTP/1.1
+content-type: application/json
+
+{}
+
+### PATCH User 3 future expired date - should be expired if called after today (2022-05-23T13:45:15.407Z)
+PATCH http://localhost:8080/users/3/rewards/2022-05-23T00:00:00Z/redeem HTTP/1.1
+content-type: application/json
+
+{}
+
+### PATCH User 3 future date
+PATCH http://localhost:8080/users/3/rewards/2022-05-27T00:00:00Z/redeem HTTP/1.1
+content-type: application/json
+
+{}
+
+### PATCH User 3 far future date
+PATCH http://localhost:8080/users/3/rewards/2022-05-30T00:00:00Z/redeem HTTP/1.1
+content-type: application/json
+
+{}
+
+### GET User 3
+GET http://localhost:8080/users/3/rewards HTTP/1.1
+content-type: application/json
+
+{}
