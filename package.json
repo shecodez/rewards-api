@@ -1,0 +1,28 @@
+{
+  "name": "rewards-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js | pino-pretty",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shecodez/rewards-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shecodez/rewards-api/issues"
+  },
+  "homepage": "https://github.com/shecodez/rewards-api#readme",
+  "dependencies": {
+    "fastify": "^3.29.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
